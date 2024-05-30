@@ -1,0 +1,57 @@
+openapi: 3.0.1
+info:
+  title: "WebApplication1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+  version: "1.0"
+servers:
+- url: /
+paths:
+  /Duck:
+    get:
+      operationId: GetDuck
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Duck'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Duck'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Duck'
+          description: OK
+      tags:
+      - Duck
+components:
+  schemas:
+    Animal:
+      additionalProperties: false
+      discriminator:
+        propertyName: typeName
+      properties:
+        typeName:
+          nullable: true
+          readOnly: true
+          type: string
+        sound:
+          nullable: true
+          readOnly: true
+          type: string
+      required:
+      - typeName
+      type: object
+    Duck:
+      allOf:
+      - $ref: '#/components/schemas/Animal'
+      - additionalProperties: false
+        properties:
+          typeName:
+            nullable: true
+            readOnly: true
+            type: string
+        type: object
+      example:
+        sound: sound
+        typeName: typeName
+

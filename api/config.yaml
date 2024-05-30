@@ -1,0 +1,12 @@
+# https://github.com/OpenAPITools/openapi-generator/blob/master/docs/generators/csharp-netcore.md
+
+globalProperties:
+    apiTests: false
+    modelTests: false
+    apiDocs: false
+    modelDocs: false
+
+additionalProperties:
+    packageName: DuckClient
+    targetFramework: net6.0
+    library: httpclient
